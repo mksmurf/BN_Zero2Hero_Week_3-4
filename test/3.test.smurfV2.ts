@@ -13,19 +13,19 @@ describe("smurfV2", function () {
   });
 
   it("should retrievevalue previously stored", async function () {
-    await smurfV2.setValue(42)
-    expect(await smurfV2.retrieve()).to.equal(BigNumber.from('42'))
+    await smurfV2.setValue(77)
+    expect(await smurfV2.retrieve()).to.equal(BigNumber.from('77'))
 
     await smurfV2.setValue(100)
     expect(await smurfV2.retrieve()).to.equal(BigNumber.from('100'))
   });
 
   it('should increment value correctly', async function () {
-    await smurfV2.setValue(42)
+    await smurfV2.setValue(77)
     await smurfV2.increment()
-    expect(await smurfV2.retrieve()).to.equal(BigNumber.from('43'))
+    expect(await smurfV2.retrieve()).to.equal(BigNumber.from('78'))
 
     await smurfV2.reduce()
-    expect(await smurfV2.retrieve()).to.equal(BigNumber.from('42'))
+    expect(await smurfV2.retrieve()).to.equal(BigNumber.from('77'))
   })
 })

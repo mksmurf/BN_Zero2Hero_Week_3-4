@@ -14,17 +14,17 @@ describe("smurf (proxy) V3 with name", function () {
     const SmurfV3 =  await ethers.getContractFactory("SmurfV3");
     const SmurfV4 =  await ethers.getContractFactory("SmurfV4");
 
-    //initialize with 42
-    smurf = await upgrades.deployProxy(Smurf, [42], {initializer: 'setValue'});
+    //initialize with 77
+    smurf = await upgrades.deployProxy(Smurf, [77], {initializer: 'setValue'});
     smurfV2 = await upgrades.upgradeProxy(smurf.address, SmurfV2);
     smurfV3 = await upgrades.upgradeProxy(smurf.address, SmurfV3);
     smurfV4 = await upgrades.upgradeProxy(smurf.address, SmurfV4);
   })
 
   it("should retrieve value previously stored and increment correctly", async function () {
-    expect(await smurfV4.retrieve()).to.equal(BigNumber.from('42'))
+    expect(await smurfV4.retrieve()).to.equal(BigNumber.from('77'))
     await smurfV4.increment()
-    expect(await smurfV4.retrieve()).to.equal(BigNumber.from('43'))
+    expect(await smurfV4.retrieve()).to.equal(BigNumber.from('78'))
 
     await smurfV2.setValue(100)
     expect(await smurfV2.retrieve()).to.equal(BigNumber.from('100'))
@@ -36,9 +36,9 @@ describe("smurf (proxy) V3 with name", function () {
     expect(smurfV4.name).to.be.undefined
     expect(await smurfV4.getName()).to.equal("Name: ")
 
-    const boxname="my Box V4"
+    const boxname="Smurf V4 Now"
     await smurfV4.setName(boxname)
-    expect(await smurfV4.getName()).to.equal("Name: "+boxname)
+    expect(await smurfV4.getName()).to.equal(boxname)
   })
 
 })

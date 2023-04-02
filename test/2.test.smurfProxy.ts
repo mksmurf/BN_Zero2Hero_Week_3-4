@@ -9,7 +9,7 @@ describe("Smurf (proxy)", function () {
   beforeEach(async function () {
     const Smurf = await ethers.getContractFactory("Smurf")
         //initilize with 42
-        smurf = await upgrades.deployProxy(Smurf, [42], {initializer: 'initialize'})
+        smurf = await upgrades.deployProxy(Smurf, [77], {initializer: 'initialize'})
     })
 
   it("should retrieve value previously stored", async function () {    

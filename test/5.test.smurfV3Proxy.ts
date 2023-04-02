@@ -12,19 +12,19 @@ describe("smurf (proxy) V3 with name", function () {
     const SmurfV2 = await ethers.getContractFactory("SmurfV2");
     const SmurfV3 =  await ethers.getContractFactory("SmurfV3");
 
-    //initialize with 42
-    smurf = await upgrades.deployProxy(Smurf, [42], {initializer: 'setValue'});
+    //initialize with 77
+    smurf = await upgrades.deployProxy(Smurf, [77], {initializer: 'setValue'});
     smurfV2 = await upgrades.upgradeProxy(smurf.address, SmurfV2);
     smurfV3 = await upgrades.upgradeProxy(smurf.address, SmurfV3);
   })
 
   it("should retrieve value previously stored and increment correctly", async function () {
     //查看v2里的value是不是 v1里的初始值
-    expect(await smurfV2.retrieve()).to.equal(BigNumber.from('42'));
+    expect(await smurfV2.retrieve()).to.equal(BigNumber.from('77'));
     //在v3执行+1 
     await smurfV3.increment();
-    //查看v2 里边是不是43
-    expect(await smurfV2.retrieve()).to.equal(BigNumber.from('43'));
+    //查看v2 里边是不是77
+    expect(await smurfV2.retrieve()).to.equal(BigNumber.from('78'));
 
     //在v2里设置value为100
     await smurfV2.setValue(100);
