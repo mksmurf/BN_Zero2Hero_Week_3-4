@@ -1,4 +1,4 @@
-// test/1.Box.test.ts
+// test/1.test.smurf.ts
 import { expect } from "chai";
 import { ethers } from "hardhat"
 import { Contract, BigNumber } from "ethers"
@@ -13,8 +13,8 @@ describe("smurf", function () {
   })
 
   it("should retrieve value previously stored", async function () {
-    await smurf.setValue(42);
-    expect(await smurf.retrieve()).to.equal(BigNumber.from('42'));
+    await smurf.setValue(77);
+    expect(await smurf.retrieve()).to.equal(BigNumber.from('77'));
 
     await smurf.setValue(100);
     expect(await smurf.retrieve()).to.equal(BigNumber.from('100'));

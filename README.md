@@ -1,6 +1,7 @@
 # 使用Hardhat在BNB Testnet部署一套可升级的代理合约，至少包含常量，状态变量和读写状态变量的函数
 
 **逻辑合约 Smurf.sol**
+(将localhost替换为bscTestnet可部署到BSC Test Network)
 
 v1版本部署
 ```shell
@@ -36,3 +37,9 @@ npx hardhat run scripts/4.deploy_smurfV4.ts --network localhost
 ```shell
 npx hardhat smurfV4 --network localhost
 ```
+
+##验证合约（）
+```shell
+npx hardhat verify <contract address> --network bscTestnet
+```
+

@@ -2,7 +2,7 @@ import { expect } from "chai"
 import { ethers, upgrades } from "hardhat"
 import { Contract, BigNumber } from "ethers"
 
-describe("smurf (proxy) V3 with name", function () {
+describe("smurf (proxy) V4 with name", function () {
   let smurf:Contract;
   let smurfV2:Contract;
   let smurfV3:Contract;
@@ -31,14 +31,18 @@ describe("smurf (proxy) V3 with name", function () {
   })
 
   it("should setName and getName correctly in V4", async function () {
-    //name() removed, getName() now
-    // expect(boxV4).to.not.have.own.property("name")
+    // Make sure the `name` variable is no longer defined as a public variable
     expect(smurfV4.name).to.be.undefined
-    expect(await smurfV4.getName()).to.equal("Name: ")
 
-    const boxname="Smurf V4 Now"
-    await smurfV4.setName(boxname)
-    expect(await smurfV4.getName()).to.equal(boxname)
+    // Check the initial name value
+    expect(await smurfV4.getName()).to.equal("")
+
+    // Set the new name value for 'Smurf V4 Now'
+    const newName = "Smurf V4 Now"
+    await smurfV4.setName(newName)
+
+    // Check the updated name value
+    expect(await smurfV4.getName()).to.equal(newName)
   })
 
 })
