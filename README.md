@@ -38,7 +38,7 @@ npx hardhat run scripts/4.deploy_smurfV4.ts --network localhost
 npx hardhat smurfV4 --network localhost
 ```
 
-##验证合约（）
+##验证合约（需要设置bscTestnet的API KEY）
 ```shell
 npx hardhat verify <contract address> --network bscTestnet
 ```
